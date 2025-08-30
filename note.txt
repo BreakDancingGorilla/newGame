@@ -1,0 +1,31 @@
+  class ACTOR {
+    constructor(x,y,width,height){
+      this.y = x;
+      this.x = y;
+      this.width = width;
+      this.height = height
+      this.screenX = 0;
+      this.screenY = 0;
+      this.addSelfToList();
+    }
+    draw(){
+      this.screenX = this.x - camera.x;
+      this.screenY = this.y - camera.y;
+      ctx.fillRect(this.screenX,this.screenY,this.width,this.height);
+    }
+    addSelfToList(){
+      actorList[actorList.length] = this;
+    }
+  }
+
+var redCrates = new OBJECTLIST(35,35,50,50);
+redCrates.id = "redCrates";
+redCrates.colorBP = "gold";
+redCrates.imgSrcBP = "imgs/redCrate.png";
+
+redCrates.renderBP = 2;
+redCrates.dragableBP = true;
+redCrates.hasGravityBP = true; 
+redCrates.gravityAffectedBP = true;
+redCrates.isSolid = true;
+redCrates.createObjects(5,true);

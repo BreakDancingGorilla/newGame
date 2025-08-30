@@ -1,0 +1,16 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* prevents scrollbars */
+}
+
+canvas {
+  display: block; 
+  position: absolute;  /* removes inline spacing */
+}
+
+#cords {
+  background-color: green;
+  position: absolute;
+  
+}
