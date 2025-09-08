@@ -18,14 +18,23 @@
     }
   }
 
-var redCrates = new OBJECTLIST(35,35,50,50);
-redCrates.id = "redCrates";
-redCrates.colorBP = "gold";
-redCrates.imgSrcBP = "imgs/redCrate.png";
 
-redCrates.renderBP = 2;
-redCrates.dragableBP = true;
-redCrates.hasGravityBP = true; 
-redCrates.gravityAffectedBP = true;
-redCrates.isSolid = true;
-redCrates.createObjects(5,true);
+      randomPoint(distance,index) {
+      return {x:this.array[index].screenX + ranNum(-distance, distance),y:this.array[index].screenY + ranNum(-distance, distance)}
+    }
+
+
+      class NPC extends OBJECTLIST {
+      constructor(speed, behavior){
+        this.speed = speed;
+        this.behavior = behavior; ///PASSIVE, NEUTRAL, AGGRESSIVE
+        this.hunger = 100;
+        this.stamina = 100;
+        this.state = "roaming"; ///Attacking, roaming, eating, fleeing, 
+      }
+      update(){
+        if (this.state = "roaming") {
+          randomPointNearObj(this,500);
+        }
+      }
+    }

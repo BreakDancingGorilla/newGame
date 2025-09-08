@@ -1,0 +1,5 @@
+start working on the npc stuff. 
+add roaming to a point in the proximity. 
+add a hunger meter and when it gets low the animals(mouse) will find nearest-
+berry and eat. 
+add attacking, mouse will flee but attack if player gets too close. 

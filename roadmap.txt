@@ -1,0 +1,105 @@
+heck yeah—survival games are a playground for systems. here’s a tight menu of features you can mix-and-match, plus a build order so you don’t drown in scope.
+
+# core survival loop (mvp)
+
+* player stats: health, stamina, hunger, thirst, body temp
+* damage types: physical, bleed, poison, cold/heat
+* time system: day/night cycle; nights are riskier
+* resources: wood, stone, ore, fiber, food, water
+* tools: axe, pickaxe, knife (with durability)
+* crafting: campfire, basic tools, bandages, simple weapons
+* shelter: place walls/floors/doors; bed for respawn
+* enemies: 1–2 basic melee types with patrol/aggro + simple pathing
+* save/load: autosave on sleep or checkpoints
+
+# progression & systems
+
+* tech tiers: primitive → metal → advanced (gates via rare mats + benches)
+* skill/perk tree: harvesting speed, carry weight, crit chance, crafting speed
+* blueprint drops: rare recipes from dungeons/bosses
+* weather: rain (cold/wet), snow (hypothermia), storm (visibility), heat (dehydration)
+* seasons: crop growth, animal spawns, clothing requirements
+* farming: seeds, soil quality, watering, pests; compost → fertilizer
+* cooking: raw → cooked → gourmet (buffs), food spoilage
+* electricity/fuel: generators, solar, batteries, wiring (lights/turrets)
+* traps & defenses: spikes, snares, mines, auto-turrets
+* vehicles/mounts: hand cart → raft → boat → glider → buggy (fuel + repairs)
+
+# world & content
+
+* biomes: meadow, forest, swamp, desert, mountain, caves (unique threats & loot)
+* POIs: ruins, labs, bunkers, crashed pods with mini-puzzles/keys
+* events: blood moon, supply drops, roaming horde, merchant caravan
+* bosses: biome guardians unlock fast travel/recipes
+* quests/contracts: “hunt X”, “deliver Y”, “defend Z minutes”
+
+# enemies & ai
+
+* archetypes: charger, ranged spitter, burrower/ambusher, tank, swarmer
+* senses: sight, sound, smell; distraction (rocks/alarms)
+* behaviors: patrol → investigate → chase → search → give up
+* nests/hives: destroy to reduce local spawn pressure
+
+# building & base life
+
+* snapping grid, upgrade/repair hammer, decay/tax if unsupported
+* storage with tags/auto-sort; lockable doors/keys
+* beds (spawn), wardrobes (temperature/armor sets)
+* crafting stations: workbench, smelter, chemistry, fabricator
+* power network: cables, switches, fuses; power usage UI
+
+# economy & loot
+
+* rarity tiers; dismantle to mats
+* merchants: barter with reputation; daily rotating stock
+* currency (or cigarettes/scrap) + craft insurance (keep item on death)
+
+# multiplayer (if you go there)
+
+* drop-in co-op; shared beds & chests; roles (builder/scout/medic)
+* base permissions; proximity voice; `/ping` markers
+* anti-grief options: claim flags, raid windows, PvE/PvP servers
+
+# UX & quality of life
+
+* map & fog of war; custom markers
+* compass & waypoints; mini-quest tracker
+* radial menu for build/craft; quick slots; stack split; shift-click
+* damage numbers toggles; hit flashes; status effect icons with timers
+* accessibility: colorblind-safe palettes, full remap, aim assist, subtitles
+
+# tech for your current engine (canvas-based)
+
+* entity component system (ECS) lite: entities + components (Transform, Sprite, Collider, Health) + systems (Render, Physics, AI)
+* spatial partitioning: uniform grid or quad-tree for collision; huge perf win over O(n²)
+* swept AABB for fast movers; continuous collision to prevent tunneling
+* object pools for projectiles/particles/enemies (no GC spikes)
+* animation: sprite sheets (you’ve got this), add time-based frame advance (ms)
+* audio: SFX pools, 2D positional pan; low-latency `AudioContext`
+* debug overlay: fps, draw calls, active entities, heap estimate
+* save format: JSON snapshot of components; version it
+
+# difficulty & pacing
+
+* director system: raises/lower danger based on your gear, base strength, recent deaths
+* heatmap spawns: “noisy” players attract threats
+* wave/horde nights: scaling frequency + composition
+* soft caps: food/water decay faster the more you hoard (optional)
+
+# roadmap (pragmatic build order)
+
+1. **MVP**: stats + day/night + 1 biome + 1 enemy + basic crafting + shelter + save/load
+2. **Alpha**: farming + cooking + 3–4 enemies + weather + 2 POIs + talent perks
+3. **Beta**: base power + traps + horde nights + boss + 2 more biomes + merchants
+4. **Polish**: particles, camera shake, hit pause, soundscape, achievements, accessibility
+
+# quick wins you can add this week
+
+* stamina that gates sprint/roll; regen slower when hungry/thirsty
+* blood moon event every 5 nights (increasing wave size)
+* simple trap: placeable spike that damages + slows enemies
+* campfire with radial cooking UI (raw → cooked; small buff)
+* map markers + compass headings
+* quad-tree or grid buckets for your current collision checks
+
+Want me to turn any of these into concrete tasks + starter code (e.g., stamina system, weather tick, or grid-based collision)?

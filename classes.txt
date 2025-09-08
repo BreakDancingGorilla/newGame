@@ -1,0 +1,32 @@
+class Animal {
+  speak() {
+    console.log("Some generic sound");
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log("Woof!");
+  }
+}
+
+let d = new Dog();
+d.speak(); // "Woof!"
+
+
+
+
+class MyClass {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+let x = new MyClass("Alice");
+
+// Add a method to this instance only
+x.sayHello = function() {
+  console.log(`Hello, my name is ${this.name}`);
+};
+
+x.sayHello(); // "Hello, my name is Alice"
